@@ -1,0 +1,5 @@
+Ex1:
+SELECT Quantity AS 'Quantidade' ,ProductID AS 'ID do Produto' FROM OrderDetails WHERE QUANTITY > 15 AND ProductID > 10
+Ex2:
+SELECT OrderID, Quantity FROM OrderDetails WHERE OrderID < 100 AND Quantity > 20
+Ex3:
