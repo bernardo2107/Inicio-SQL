@@ -1,5 +1,69 @@
-Ex1:
-SELECT Quantity AS 'Quantidade' ,ProductID AS 'ID do Produto' FROM OrderDetails WHERE QUANTITY > 15 AND ProductID > 10
-Ex2:
-SELECT OrderID, Quantity FROM OrderDetails WHERE OrderID < 100 AND Quantity > 20
-Ex3:
+
+Ex34:
+SELECT Quantity AS 'Quantidade', ProductID AS 'ID do produto', OrderID AS 'Numero da ordem', OrderDetailID As 'Detalhe do ID Da Ordem' FROM OrderDetails
+WHERE Quantity < 12 AND OrderDetailID > 150
+ORDER BY OrderID ASC
+Ex35:
+SELECT Quantity AS 'Quantidade', ProductID AS 'ID do produto' FROM OrderDetails
+WHERE Quantity % 3 = 0 AND ProductID BETWEEN 20 AND 40
+ORDER BY Quantity ASC
+Ex36:
+SELECT OrderID AS 'Numero da ordem', Quantity AS 'Quantidade', ProductID AS 'ID do produto' FROM OrderDetails 
+WHERE OrderID > 700 AND Quantity > 40
+ORDER BY ProductID
+Ex37:
+SELECT ProductID AS 'ID do produto', OrderID as 'Numero da ordem', Quantity AS 'Quantidade' FROM OrderDetails 
+WHERE ProductID %8 = 0 AND OrderID < 400 
+ORDER BY Quantity
+Ex38:
+SELECT Quantity AS 'Quantidade', OrderID AS 'Numero da ordem', OrderDetailID AS 'Detalhe numero da ordem'
+FROM OrderDetails WHERE Quantity > 15 AND OrderDetailID LIKE '%4'
+ORDER BY OrderID
+Ex39:
+SELECT OrderID AS 'Numero da ordem', ProductID AS 'ID do produto', OrderDetailID AS 'Detalhe numero da ordem' 
+FROM OrderDetails WHERE OrderID < 100 AND ProductID BETWEEN 10 AND 20
+ORDER BY OrderDetailID
+Ex40:
+SELECT OrderID AS 'Numero da ordem', ProductID AS 'Id do produto', Quantity AS 'Quantidade' FROM OrderDetails
+WHERE Quantity < 30 AND ProductID %5 = 0
+ORDER BY OrderID
+Ex41:
+SELECT ProductID AS 'ID do produto', Quantity as 'Quantidade', OrderDetailID AS 'Detalhe numero da ordem' 
+FROM OrderDetails WHERE ProductID LIKE '%9' AND Quantity < 20
+ORDER BY OrderDetailID
+Ex42:
+SELECT OrderID AS 'Numero da ordem', Quantity as 'Quantidade', ProductID AS 'ID do produto' 
+FROM OrderDetails WHERE ProductID BETWEEN 15 AND 30 AND OrderID %5 = 0
+ORDER BY Quantity
+Ex43:
+SELECT Quantity AS 'Quantidade', OrderDetailID AS 'Detalhe numero da ordem', OrderID AS 'Numero da ordem'
+FROM OrderDetails WHERE Quantity BETWEEN 25 AND 50 AND OrderDetailID %7 = 0
+ORDER BY OrderID
+Ex44:
+SELECT OrderID AS 'Numero da ordem', Quantity AS 'Quantidade', ProductID AS 'ID do produto' FROM OrderDetails
+WHERE OrderID < 250 AND Quantity %6 = 0
+ORDER BY ProductID
+Ex45:
+SELECT OrderDetailID AS 'Detalhe numero da ordem', Quantity AS 'Quantidade', ProductID AS 'ID do produto' FROM OrderDetails
+WHERE OrderDetailID BETWEEN 50 AND 150 AND ProductID > 20
+ORDER BY Quantity
+Ex46: 
+SELECT OrderID AS 'Numero da ordem', Quantity AS 'Quantidade', ProductID AS 'ID do produto' FROM OrderDetails
+WHERE OrderID = 350 AND Quantity > 30
+ORDER BY ProductID 
+Ex47:
+SELECT ProductID AS 'ID do produto', OrderDetailID AS 'Detalhe numero da ordem', OrderID AS 'Numero da ordem' 
+FROM OrderDetails WHERE ProductID LIKE '%0' AND OrderDetailID %2 = 0
+ORDER BY OrderID
+Ex48:
+SELECT Quantity AS 'Quantidade', ProductID AS 'ID do produto' FROM OrderDetails
+WHERE Quantity BETWEEN 10 AND 25 AND ProductID < 50
+ORDER BY Quantity
+Ex49:
+SELECT Quantity AS 'Quantidade', OrderID AS 'Numero da ordem', OrderDetailID AS 'Detalhe numero da ordem' 
+FROM OrderDetails WHERE OrderID LIKE '%1' AND Quantity %5 = 0
+ORDER BY OrderDetailID 
+Ex50:
+SELECT OrderDetailID AS 'Detalhe numero da ordem', Quantity AS 'Quantidade', OrderID AS 'Numero da ordem'
+FROM OrderDetails WHERE OrderDetailID > 300 AND Quantity < 12 
+ORDER BY OrderID
