@@ -269,4 +269,191 @@ ORDER BY Country,PostalCode ASC;
 
 (João)
 
-Ex26
+Ex26:
+SELECT CustomerID AS 'Identificacao do cliente', CustomerName AS 'Nome do ciente', 
+ContactName AS 'Nome de Contato',Address AS 'Endereco', City AS 'Cidade',
+PostalCode AS 'Codigo Postal', Country AS 'Pais'
+FROM Customers WHERE City LIKE != '%London'
+ORDER BY CustomerID ASC;
+
+Ex27:
+SELECT CustomerID AS 'Identificacao do cliente', CustomerName AS 'Nome do ciente', 
+ContactName AS 'Nome de Contato',Address AS 'Endereco', City AS 'Cidade',
+PostalCode AS 'Codigo Postal', Country AS 'Pais'
+FROM Customers WHERE ContactName LIKE '%a'
+ORDER BY ContactName ASC;
+
+Ex28:
+SELECT CustomerID AS 'Identificacao do cliente', CustomerName AS 'Nome do ciente', 
+ContactName AS 'Nome de Contato',Address AS 'Endereco', City AS 'Cidade',
+PostalCode AS 'Codigo Postal', Country AS 'Pais'
+FROM Customers WHERE Country LIKE '%Canada'
+ORDER BY PostalCode,CustomerName ASC;
+
+Ex29:
+SELECT CustomerID AS 'Identificacao do cliente', CustomerName AS 'Nome do ciente', 
+ContactName AS 'Nome de Contato',Address AS 'Endereco', City AS 'Cidade',
+PostalCode AS 'Codigo Postal', Country AS 'Pais'
+FROM Customers WHERE CustomerName LIKE '%Global'
+ORDER BY Country ASC;
+
+Ex30:
+SELECT CustomerID AS 'Identificacao do cliente', CustomerName AS 'Nome do ciente', 
+ContactName AS 'Nome de Contato',Address AS 'Endereco', City AS 'Cidade',
+PostalCode AS 'Codigo Postal', Country AS 'Pais'
+FROM Customers WHERE Country  LIKE 'i%'
+ORDER BY City ASC;
+
+Ex31:
+SELECT CustomerID AS 'Identificacao do cliente', CustomerName AS 'Nome do ciente', 
+ContactName AS 'Nome de Contato',Address AS 'Endereco', City AS 'Cidade',
+PostalCode AS 'Codigo Postal', Country AS 'Pais'
+FROM Customers WHERE CustomerName  LIKE 'T%'
+ORDER BY ContactName DESC;
+
+Ex32:
+SELECT CustomerID AS 'Identificacao do cliente', CustomerName AS 'Nome do ciente', 
+ContactName AS 'Nome de Contato',Address AS 'Endereco', City AS 'Cidade',
+PostalCode AS 'Codigo Postal', Country AS 'Pais'
+FROM Customers 
+WHERE City  LIKE 'Chicago%'
+ORDER BY PostalCode ASC;
+
+Ex33:
+SELECT CustomerID AS 'Identificacao do cliente', CustomerName AS 'Nome do ciente', 
+ContactName AS 'Nome de Contato',Address AS 'Endereco', City AS 'Cidade',
+PostalCode AS 'Codigo Postal', Country AS 'Pais'
+WHERE Country  LIKE 'Italy%'
+ORDER BY ContactName ASC;
+
+Ex34:
+SELECT CustomerID AS 'Identificacao do cliente', CustomerName AS 'Nome do ciente', 
+ContactName AS 'Nome de Contato',Address AS 'Endereco', City AS 'Cidade',
+PostalCode AS 'Codigo Postal', Country AS 'Pais'
+FROM Customers 
+WHERE CustomerName  LIKE 'B%'
+ORDER BY CustomerID ASC;
+
+Ex35:
+SELECT CustomerID AS 'Identificacao do cliente', CustomerName AS 'Nome do ciente', 
+ContactName AS 'Nome de Contato',Address AS 'Endereco', City AS 'Cidade',
+PostalCode AS 'Codigo Postal', Country AS 'Pais'
+FROM Customers 
+WHERE CustomerName  LIKE '%o'
+ORDER BY Country ASC;
+
+Ex36:
+SELECT CustomerID AS 'Identificacao do cliente', CustomerName AS 'Nome do ciente', 
+ContactName AS 'Nome de Contato',Address AS 'Endereco', City AS 'Cidade',
+PostalCode AS 'Codigo Postal', Country AS 'Pais'
+FROM Customers 
+WHERE Country  LIKE 'Brazil%'
+ORDER BY PostalCode,CustomerName ASC;
+
+Ex37:
+SELECT CustomerID AS 'Identificacao do cliente', CustomerName AS 'Nome do ciente', 
+ContactName AS 'Nome de Contato',Address AS 'Endereco', City AS 'Cidade',PostalCode AS 'Codigo Postal', Country AS 'Pais' 
+FROM Customers
+WHERE PostalCode LIKE '9%'
+ORDER BY CustomerName DESC;
+
+Ex38:
+SELECT CustomerID AS 'Identificacao do cliente', CustomerName AS 'Nome do ciente', 
+ContactName AS 'Nome de Contato',Address AS 'Endereco', City AS 'Cidade',PostalCode AS 'Codigo Postal', Country AS 'Pais' 
+FROM Customers
+WHERE CustomerName LIKE '%Services%'
+ORDER BY ContactName ASC;
+
+Ex39:
+SELECT CustomerID AS 'Identificacao do cliente', CustomerName AS 'Nome do ciente',
+ContactName AS 'Nome de Contato',Address AS 'Endereco', City AS 'Cidade',PostalCode AS 'Codigo Postal', Country AS 'Pais' 
+FROM Customers
+WHERE Country LIKE '%Spain%'
+ORDER BY City ASC;
+
+Ex40:
+SELECT CustomerID AS 'Identificacao do cliente', CustomerName AS 'Nome do ciente', 
+ContactName AS 'Nome de Contato',Address AS 'Endereco', City AS 'Cidade',PostalCode AS 'Codigo Postal', Country AS 'Pais' 
+FROM Customers
+WHERE City LIKE 'A%'
+ORDER BY customername,country ASC;
+
+Ex41:
+SELECT CustomerID AS 'Identificacao do cliente', CustomerName AS 'Nome do ciente', 
+ContactName AS 'Nome de Contato',Address AS 'Endereco', City AS 'Cidade',
+PostalCode AS 'Codigo Postal', Country AS 'Pais' 
+FROM Customers
+WHERE ContactName LIKE '%e'
+ORDER BY postalcode ASC;
+
+Ex42:
+SELECT CustomerID AS 'Identificacao do cliente', CustomerName AS 'Nome do ciente', 
+ContactName AS 'Nome de Contato',Address AS 'Endereco', City AS 'Cidade',
+PostalCode AS 'Codigo Postal', Country AS 'Pais' 
+FROM Customers
+WHERE customername LIKE '%Group%'
+ORDER BY country ASC;
+
+Ex43:
+SELECT CustomerID AS 'Identificacao do cliente', CustomerName AS 'Nome do ciente', 
+ContactName AS 'Nome de Contato',Address AS 'Endereco', City AS 'Cidade',
+PostalCode AS 'Codigo Postal', Country AS 'Pais' 
+FROM Customers
+WHERE Country LIKE '%n'
+ORDER BY Customername DESC;
+
+Ex44:
+SELECT CustomerID AS 'Identificacao do cliente', CustomerName AS 'Nome do ciente', 
+ContactName AS 'Nome de Contato',Address AS 'Endereco', City AS 'Cidade',
+PostalCode AS 'Codigo Postal', Country AS 'Pais' 
+FROM Customers
+WHERE City LIKE 'L%'
+ORDER BY Customerid ASC;
+
+Ex45:
+SELECT CustomerID AS 'Identificacao do cliente', CustomerName AS 'Nome do ciente', 
+ContactName AS 'Nome de Contato',Address AS 'Endereco', City AS 'Cidade',
+PostalCode AS 'Codigo Postal', Country AS 'Pais' 
+FROM Customers
+WHERE Country LIKE '%Japan%'
+ORDER BY postalcode DESC;
+
+Ex46:
+SELECT CustomerID AS 'Identificacao do cliente', CustomerName AS 'Nome do ciente', 
+ContactName AS 'Nome de Contato',Address AS 'Endereco', City AS 'Cidade',
+PostalCode AS 'Codigo Postal', Country AS 'Pais' 
+FROM Customers
+WHERE PostalCode LIKE '%5'
+ORDER BY Customername,city ASC;
+
+Ex47:
+SELECT CustomerID AS 'Identificacao do cliente', CustomerName AS 'Nome do ciente', 
+ContactName AS 'Nome de Contato',Address AS 'Endereco', City AS 'Cidade',
+PostalCode AS 'Codigo Postal', Country AS 'Pais' 
+FROM Customers
+WHERE Country LIKE '%Germany'
+ORDER BY city ASC;
+
+Ex48:
+SELECT CustomerID AS 'Identificacao do cliente', CustomerName AS 'Nome do ciente', 
+ContactName AS 'Nome de Contato',Address AS 'Endereco', City AS 'Cidade',
+PostalCode AS 'Codigo Postal', Country AS 'Pais' 
+FROM Customers
+WHERE customername LIKE 'C%'
+ORDER BY country,contactname ASC;
+
+Ex49:
+SELECT CustomerID AS 'Identificacao do cliente', CustomerName AS 'Nome do ciente', 
+ContactName AS 'Nome de Contato',Address AS 'Endereco', City AS 'Cidade',
+PostalCode AS 'Codigo Postal', Country AS 'Pais' 
+FROM Customers
+WHERE contactname LIKE '%king%'
+ORDER BY customerid ASC;
+
+Ex50:
+SELECT CustomerID AS 'Identificacao do cliente', CustomerName AS 'Nome do ciente', 
+ContactName AS 'Nome de Contato',Address AS 'Endereco', City AS 'Cidade',
+PostalCode AS 'Codigo Postal', Country AS 'Pais' 
+FROM Customers
+WHERE postalcode LIKE '3%'
+ORDER BY customername,country ASC;
