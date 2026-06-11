@@ -1,0 +1,11 @@
+Ex1
+
+SELECT ProductName AS 'Nome do Produto',
+CONCAT(Price*2) AS 'Dobro do preço',
+ProductID AS 'Id do Produto'
+FROM Products 
+LIMIT 10
+
+Ex2
+
+SELECT 
