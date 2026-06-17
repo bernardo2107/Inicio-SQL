@@ -1,3 +1,202 @@
+Ex1
+
+SELECT OrderDetailID, OrderID, ProductID, Quantity FROM OrderDetails LIMIT 5;
+ 
+Ex2
+
+SELECT OrderDetailID, OrderID, ProductID, Quantity FROM OrderDetails WHERE Quantity > 10 ORDER BY OrderID LIMIT 3;
+ 
+Ex3
+
+SELECT OrderDetailID, OrderID, ProductID, Quantity FROM OrderDetails ORDER BY Quantity DESC LIMIT 7;
+ 
+Ex4
+
+SELECT OrderDetailID, OrderID, ProductID, Quantity FROM OrderDetails WHERE ProductID = 4 LIMIT 10;
+ 
+Ex5
+
+SELECT OrderID FROM OrderDetails ORDER BY OrderDetailID ASC LIMIT 2;
+ 
+Ex6
+
+SELECT OrderDetailID, OrderID, ProductID, Quantity FROM OrderDetails ORDER BY Quantity DESC LIMIT 15;
+ 
+Ex7
+
+SELECT OrderDetailID, OrderID, ProductID, Quantity FROM OrderDetails ORDER BY Quantity ASC LIMIT 20
+
+Ex8
+
+SELECT OrderDetailID, OrderID, ProductID, Quantity FROM OrderDetails ORDER BY Quantity DESC LIMIT 8
+
+Ex9
+
+SELECT OrderDetailID, OrderID, ProductID, Quantity FROM OrderDetails WHERE ProductID > 3 ORDER BY OrderID LIMIT 5;
+ 
+Ex10 
+
+SELECT OrderDetailID, OrderID, ProductID, Quantity FROM OrderDetails ORDER BY OrderID DESC LIMIT 10
+ 
+Ex11
+
+SELECT OrderDetailID, OrderID, ProductID, Quantity FROM OrderDetails WHERE Quantity < 15 ORDER BY OrderDetailID LIMIT 12;
+ 
+Ex12 
+
+SELECT OrderDetailID, OrderID, ProductID, Quantity FROM OrderDetails WHERE ProductID % 2 = 0 ORDER BY Quantity LIMIT 6;
+ 
+Ex13
+
+SELECT OrderDetailID, OrderID, ProductID, Quantity FROM OrderDetails ORDER BY ProductID DESC LIMIT 5;
+ 
+Ex14
+
+SELECT OrderDetailID, OrderID, ProductID, Quantity FROM OrderDetails ORDER BY OrderID, Quantity LIMIT 7;
+ 
+Ex15
+
+SELECT OrderDetailID, OrderID, ProductID, Quantity FROM OrderDetails WHERE Quantity < 8 ORDER BY OrderID, ProductID LIMIT 3;
+ 
+Ex16
+
+SELECT OrderDetailID, OrderID, ProductID, Quantity FROM OrderDetails ORDER BY Quantity DESC LIMIT 9
+ 
+Ex17
+
+SELECT OrderDetailID, OrderID, ProductID, Quantity FROM OrderDetails WHERE OrderID = 20 LIMIT 2;
+ 
+Ex18
+
+SELECT OrderDetailID, OrderID, ProductID, Quantity FROM OrderDetails WHERE Quantity > 25 ORDER BY ProductID LIMIT 10;
+ 
+Ex19
+
+SELECT OrderDetailID, OrderID, ProductID, Quantity FROM OrderDetails WHERE OrderDetailID < 50 ORDER BY Quantity LIMIT 4;
+ 
+Ex20
+
+SELECT OrderDetailID, OrderID, ProductID, Quantity FROM OrderDetails WHERE OrderID BETWEEN 10 AND 30 ORDER BY ProductID LIMIT 6;
+ 
+Ex21
+
+SELECT OrderDetailID, OrderID, ProductID, Quantity FROM OrderDetails ORDER BY Quantity DESC LIMIT 8
+
+Ex22
+
+SELECT OrderDetailID, OrderID, ProductID, Quantity FROM OrderDetails WHERE ProductID LIKE '%7' ORDER BY OrderID LIMIT 5;
+ 
+Ex23
+
+SELECT OrderID FROM OrderDetails WHERE OrderID > 100 ORDER BY Quantity LIMIT 3;
+ 
+Ex24
+
+SELECT OrderDetailID, OrderID, ProductID, Quantity FROM OrderDetails WHERE Quantity > 15 ORDER BY OrderDetailID LIMIT 10;
+ 
+Ex25
+
+SELECT OrderDetailID, OrderID, ProductID, Quantity FROM OrderDetails ORDER BY OrderID ASC LIMIT 12
+
+Ex26
+
+SELECT OrderDetailID, OrderID, ProductID, Quantity FROM OrderDetails WHERE ProductID % 3 = 0 ORDER BY Quantity LIMIT 7;
+ 
+Ex27
+
+SELECT OrderDetailID, OrderID, ProductID, Quantity FROM OrderDetails WHERE OrderDetailID BETWEEN 5 AND 50 ORDER BY OrderID LIMIT 10;
+ 
+Ex28
+
+SELECT OrderDetailID, OrderID, ProductID, Quantity FROM OrderDetails ORDER BY Quantity DESC LIMIT 6
+
+Ex29
+
+SELECT OrderDetailID, OrderID, ProductID, Quantity FROM OrderDetails WHERE ProductID % 2 = 1 ORDER BY Quantity LIMIT 4;
+ 
+Ex30
+
+SELECT OrderDetailID, OrderID, ProductID, Quantity FROM OrderDetails WHERE OrderID > 15 ORDER BY ProductID LIMIT 8;
+ 
+Ex31
+
+SELECT OrderDetailID, OrderID, ProductID, Quantity FROM OrderDetails WHERE Quantity < 5 ORDER BY OrderID LIMIT 3;
+ 
+Ex32
+
+SELECT OrderDetailID, OrderID, ProductID, Quantity FROM OrderDetails WHERE ProductID % 2 = 0 ORDER BY OrderID LIMIT 5;
+ 
+Ex33
+
+SELECT OrderDetailID, OrderID, ProductID, Quantity FROM OrderDetails ORDER BY OrderDetailID DESC LIMIT 10;
+
+Ex34
+
+SELECT OrderDetailID, OrderID, ProductID, Quantity FROM OrderDetails WHERE Quantity % 5 = 0 ORDER BY ProductID LIMIT 7;
+ 
+Ex35
+
+SELECT OrderDetailID, OrderID, ProductID, Quantity FROM OrderDetails ORDER BY ProductID ASC LIMIT 2
+ 
+Ex36
+
+SELECT OrderDetailID, OrderID, ProductID, Quantity FROM OrderDetails WHERE OrderID LIKE '%1' ORDER BY Quantity LIMIT 8;
+ 
+Ex37
+
+SELECT OrderDetailID, OrderID, ProductID, Quantity FROM OrderDetails ORDER BY OrderID DESC LIMIT 4
+ 
+Ex38
+
+SELECT OrderDetailID, OrderID, ProductID, Quantity FROM OrderDetails WHERE Quantity > 30 ORDER BY ProductID LIMIT 9;
+ 
+Ex39
+
+SELECT OrderDetailID, OrderID, ProductID, Quantity FROM OrderDetails ORDER BY ProductID ASC LIMIT 5
+
+Ex40
+
+SELECT OrderDetailID, OrderID, ProductID, Quantity FROM OrderDetails ORDER BY OrderDetailID DESC LIMIT 6
+
+Ex41
+
+SELECT OrderDetailID, OrderID, ProductID, Quantity FROM OrderDetails WHERE OrderID % 2 = 1 ORDER BY Quantity LIMIT 10;
+ 
+Ex42
+
+SELECT OrderDetailID, OrderID, ProductID, Quantity FROM OrderDetails WHERE Quantity = 20 ORDER BY ProductID LIMIT 3;
+ 
+Ex43
+
+SELECT OrderDetailID FROM OrderDetails WHERE OrderDetailID < 200 ORDER BY OrderID LIMIT 7;
+ 
+Ex44
+
+SELECT OrderDetailID, OrderID, ProductID, Quantity FROM OrderDetails WHERE OrderID BETWEEN 100 AND 200 ORDER BY ProductID LIMIT 5;
+ 
+Ex45
+
+SELECT OrderDetailID, OrderID, ProductID, Quantity FROM OrderDetails ORDER BY Quantity DESC LIMIT 12
+
+Ex46
+
+SELECT OrderDetailID, OrderID, ProductID, Quantity FROM OrderDetails WHERE ProductID < 10 ORDER BY OrderID LIMIT 9;
+ 
+Ex47
+
+SELECT OrderDetailID, OrderID, ProductID, Quantity FROM OrderDetails WHERE OrderID LIKE '%0' ORDER BY Quantity LIMIT 2;
+ 
+Ex48
+
+SELECT OrderDetailID, OrderID, ProductID, Quantity FROM OrderDetails ORDER BY OrderID ASC LIMIT 5
+
+Ex49
+
+SELECT OrderDetailID, OrderID, ProductID, Quantity FROM OrderDetails WHERE Quantity % 4 = 0 ORDER BY ProductID LIMIT 6;
+ 
+Ex50
+
+SELECT OrderDetailID, OrderID, ProductID, Quantity FROM OrderDetails ORDER BY ProductID DESC LIMIT 10
 
 
 
