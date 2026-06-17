@@ -30,7 +30,6 @@ SELECT * FROM OrderDetails ORDER BY Quantity ASC LIMIT 20
 Ex8
 
 SELECT * FROM OrderDetails ORDER BY Quantity DESC LIMIT 8
-) AS Sub ORDER BY OrderDetailID;
 
 Ex9
 
@@ -39,7 +38,6 @@ SELECT * FROM OrderDetails WHERE ProductID > 3 ORDER BY OrderID LIMIT 5;
 Ex10
 
 SELECT * FROM OrderDetails ORDER BY OrderID DESC LIMIT 10
-) AS Sub ORDER BY Quantity;
 
 Ex11
 
@@ -106,6 +104,71 @@ Ex26
 SELECT * FROM OrderDetails WHERE OrderDetailID BETWEEN 5 AND 50 ORDER BY OrderID LIMIT 10;
 
 Ex27
+
+SELECT * FROM OrderDetails WHERE OrderDetailID BETWEEN 5 AND 50 ORDER BY OrderID LIMIT 10;
+
+Ex28
+
+SELECT * FROM OrderDetails ORDER BY Quantity DESC LIMIT 6
+
+Ex29
+
+SELECT * FROM OrderDetails WHERE ProductID % 2 = 1 ORDER BY Quantity LIMIT 4
+
+Ex30
+
+SELECT * FROM OrderDetails WHERE OrderID > 15 ORDER BY ProductID LIMIT 8;
+
+Ex31
+
+SELECT * FROM OrderDetails WHERE Quantity < 5 ORDER BY OrderID LIMIT 3;
+
+Ex32
+
+SELECT * FROM OrderDetails WHERE ProductID % 2 = 0 ORDER BY OrderID LIMIT 5;
+
+Ex33
+
+SELECT * FROM OrderDetails ORDER BY OrderDetailID DESC LIMIT 10;
+
+Ex34
+
+SELECT * FROM OrderDetails WHERE Quantity % 5 = 0 ORDER BY ProductID LIMIT 7;
+
+Ex35
+
+SELECT * FROM OrderDetails ORDER BY ProductID ASC LIMIT 2
+
+Ex36
+
+SELECT * FROM OrderDetails WHERE OrderID LIKE '%1' ORDER BY Quantity LIMIT 8;
+
+Ex37
+
+SELECT * FROM OrderDetails ORDER BY OrderID DESC LIMIT 4
+
+Ex38
+
+SELECT * FROM OrderDetails WHERE Quantity > 30 ORDER BY ProductID LIMIT 9
+
+Ex39
+
+SELECT * FROM OrderDetails ORDER BY ProductID ASC LIMIT 5
+
+Ex40
+
+SELECT * FROM OrderDetails ORDER BY OrderDetailID DESC LIMIT 6
+
+Ex41
+
+SELECT * FROM OrderDetails WHERE OrderID % 2 = 1 ORDER BY Quantity LIMIT 10;
+
+Ex42
+
+SELECT * FROM OrderDetails WHERE Quantity = 20 ORDER BY ProductID LIMIT 3;
+
+Ex43
+
 
 
 
