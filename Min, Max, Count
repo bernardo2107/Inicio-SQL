@@ -1,0 +1,320 @@
+EX1:
+SELECT COUNT(*) AS 'Total de Registros'
+FROM OrderDetails;
+
+EX2:
+SELECT COUNT(DISTINCT OrderID) AS 'Total de Pedidos Unicos'
+FROM OrderDetails;
+
+EX3:
+SELECT COUNT(DISTINCT ProductID) AS 'Total de Produtos Diferentes'
+FROM OrderDetails;
+
+EX4:
+SELECT COUNT(*) AS 'Registros com Quantity maior que 10'
+FROM OrderDetails
+WHERE Quantity > 10;
+
+EX5:
+SELECT COUNT(*) AS 'Registros com OrderID igual a 5'
+FROM OrderDetails
+WHERE OrderID = 5;
+
+EX6:
+SELECT COUNT(ProductID) AS 'ProductID com Quantity menor que 20'
+FROM OrderDetails
+WHERE Quantity < 20;
+
+EX7:
+SELECT COUNT(*) AS 'OrderDetailID Par'
+FROM OrderDetails
+WHERE OrderDetailID % 2 = 0;
+
+EX8:
+SELECT COUNT(*) AS 'Quantity entre 5 e 15'
+FROM OrderDetails
+WHERE Quantity BETWEEN 5 AND 15;
+
+EX9:
+SELECT COUNT(*) AS 'OrderID maior que 50'
+FROM OrderDetails
+WHERE OrderID > 50;
+
+EX10:
+SELECT COUNT(*) AS 'Registros com ProductID igual a 3'
+FROM OrderDetails
+WHERE ProductID = 3;
+
+EX11:
+SELECT COUNT(*) AS 'Quantity Multiplo de 3'
+FROM OrderDetails
+WHERE Quantity % 3 = 0;
+
+EX12:
+SELECT COUNT(*) AS 'Pedidos com OrderID maior que 100'
+FROM OrderDetails
+WHERE OrderID > 100;
+
+EX13:
+SELECT COUNT(*) AS 'OrderDetailID menor que 20'
+FROM OrderDetails
+WHERE OrderDetailID < 20;
+
+EX14:
+SELECT COUNT(*) AS 'Produtos com ProductID menor que 8'
+FROM OrderDetails
+WHERE ProductID < 8;
+
+EX15:
+SELECT COUNT(*) AS 'Quantity maior que 25'
+FROM OrderDetails
+WHERE Quantity > 25;
+
+EX16:
+SELECT COUNT(ProductID) AS 'ProductID com OrderID menor que 15'
+FROM OrderDetails
+WHERE OrderID < 15;
+
+EX17:
+SELECT COUNT(*) AS 'Quantity menor que 5'
+FROM OrderDetails
+WHERE Quantity < 5;
+
+EX18:
+SELECT COUNT(OrderID) AS 'Pedidos com Quantity maior que 30'
+FROM OrderDetails
+WHERE Quantity > 30;
+
+EX19:
+SELECT COUNT(*) AS 'ProductID Par'
+FROM OrderDetails
+WHERE ProductID % 2 = 0;
+
+EX20:
+SELECT COUNT(OrderDetailID) AS 'DetailID com Quantity entre 10 e 20'
+FROM OrderDetails
+WHERE Quantity BETWEEN 10 AND 20;
+
+EX21:
+SELECT COUNT(*) AS 'ProductID maior que 15'
+FROM OrderDetails
+WHERE ProductID > 15;
+
+EX22:
+SELECT COUNT(*) AS 'OrderDetailID comeca com 1'
+FROM OrderDetails
+WHERE CAST(OrderDetailID AS CHAR) LIKE '1%';
+
+EX23:
+SELECT COUNT(*) AS 'Registros com OrderID igual a 10'
+FROM OrderDetails
+WHERE OrderID = 10;
+
+EX24:
+SELECT COUNT(*) AS 'Quantity termina com 0'
+FROM OrderDetails
+WHERE CAST(Quantity AS CHAR) LIKE '%0';
+
+EX25:
+SELECT COUNT(OrderID) AS 'OrderID com ProductID menor que 4'
+FROM OrderDetails
+WHERE ProductID < 4;
+
+EX26
+SELECT ProductID AS 'ID dos Produtos',
+       COUNT(*) AS 'Total de Registros'
+FROM OrderDetails
+WHERE ProductID % 2 = 0
+GROUP BY ProductID
+ORDER BY ProductID;
+
+EX27
+SELECT Quantity AS 'QUANTIDADE',
+       COUNT(*) AS 'Total de Registros'
+FROM OrderDetails
+WHERE Quantity % 3 = 0
+GROUP BY Quantity
+ORDER BY Quantity;
+
+EX28
+SELECT Quantity AS 'QUANTIDADE',
+       COUNT(*) AS 'Total de Registros'
+FROM OrderDetails
+WHERE Quantity BETWEEN 5 AND 15
+GROUP BY Quantity
+ORDER BY Quantity;
+
+/* EXERCICIO 29 */
+SELECT OrderID AS 'ORDENS',
+       COUNT(*) AS 'Total de Registros'
+FROM OrderDetails
+WHERE OrderID BETWEEN 50 AND 100
+GROUP BY OrderID
+ORDER BY OrderID;
+
+/* EXERCICIO 30 */
+SELECT ProductID AS 'ID dos Produtos',
+       COUNT(*) AS 'Total de Registros'
+FROM OrderDetails
+WHERE Quantity < 8
+GROUP BY ProductID
+ORDER BY ProductID;
+
+/* EXERCICIO 31 */
+SELECT OrderDetailID AS 'ORDENS DETALHADAS',
+       COUNT(*) AS 'Total de Registros'
+FROM OrderDetails
+GROUP BY OrderDetailID
+ORDER BY OrderDetailID;
+
+/* EXERCICIO 32 */
+SELECT OrderID AS 'ORDENS',
+       COUNT(*) AS 'Total de Registros'
+FROM OrderDetails
+WHERE OrderID < 20
+GROUP BY OrderID
+ORDER BY OrderID;
+
+/* EXERCICIO 33 */
+SELECT OrderID AS 'ORDENS',
+       COUNT(*) AS 'Total de Registros'
+FROM OrderDetails
+WHERE ProductID < 10
+GROUP BY OrderID
+ORDER BY OrderID;
+
+/* EXERCICIO 34 */
+SELECT Quantity AS 'QUANTIDADE',
+       COUNT(*) AS 'Total de Registros'
+FROM OrderDetails
+WHERE Quantity > 12
+GROUP BY Quantity
+ORDER BY Quantity;
+
+/* EXERCICIO 35 */
+SELECT ProductID AS 'ID dos Produtos',
+       COUNT(DISTINCT ProductID) AS 'Produtos Diferentes'
+FROM OrderDetails
+WHERE CAST(ProductID AS CHAR) LIKE '2%'
+GROUP BY ProductID
+ORDER BY ProductID;
+
+/* EXERCICIO 36 */
+SELECT OrderID AS 'ORDENS',
+       COUNT(*) AS 'Total de Registros'
+FROM OrderDetails
+WHERE OrderID BETWEEN 10 AND 30
+GROUP BY OrderID
+ORDER BY OrderID;
+
+/* EXERCICIO 37 */
+SELECT ProductID AS 'ID dos Produtos',
+       COUNT(*) AS 'Total de Registros'
+FROM OrderDetails
+WHERE ProductID BETWEEN 3 AND 8
+GROUP BY ProductID
+ORDER BY ProductID DESC;
+
+/* EXERCICIO 38 */
+SELECT ProductID AS 'ID dos Produtos',
+       COUNT(*) AS 'Total de Registros'
+FROM OrderDetails
+WHERE ProductID BETWEEN 3 AND 8
+GROUP BY ProductID
+ORDER BY ProductID;
+
+/* EXERCICIO 39 */
+SELECT OrderID AS 'ORDENS',
+       COUNT(*) AS 'Total de Registros'
+FROM OrderDetails
+WHERE Quantity > 15
+GROUP BY OrderID
+ORDER BY OrderID;
+
+/* EXERCICIO 40 */
+SELECT OrderDetailID AS 'ORDENS DETALHADAS',
+       COUNT(*) AS 'Total de Registros'
+FROM OrderDetails
+WHERE OrderDetailID < 25
+GROUP BY OrderDetailID
+ORDER BY OrderDetailID ASC;
+
+/* EXERCICIO 41 */
+SELECT OrderID AS 'ORDENS',
+       COUNT(*) AS 'Total de Registros'
+FROM OrderDetails
+WHERE OrderID BETWEEN 30 AND 70
+GROUP BY OrderID
+ORDER BY OrderID ASC;
+
+/* EXERCICIO 42 */
+SELECT ProductID AS 'ID dos Produtos',
+       COUNT(*) AS 'Total de Registros'
+FROM OrderDetails
+WHERE ProductID = 7
+GROUP BY ProductID
+ORDER BY ProductID ASC;
+
+/* EXERCICIO 43 */
+SELECT Quantity AS 'QUANTIDADE',
+       COUNT(*) AS 'Total de Registros'
+FROM OrderDetails
+WHERE Quantity > 20
+GROUP BY Quantity
+ORDER BY Quantity ASC;
+
+/* EXERCICIO 44 */
+SELECT OrderID AS 'ORDENS',
+       COUNT(*) AS 'Total de Registros'
+FROM OrderDetails
+WHERE OrderID > 15
+GROUP BY OrderID
+ORDER BY OrderID ASC;
+
+/* EXERCICIO 45 */
+SELECT ProductID AS 'ID dos Produtos',
+       COUNT(*) AS 'Total de Registros'
+FROM OrderDetails
+WHERE CAST(ProductID AS CHAR) LIKE '%6'
+GROUP BY ProductID
+ORDER BY ProductID ASC;
+
+/* EXERCICIO 46 */
+SELECT Quantity AS 'QUANTIDADE',
+       COUNT(*) AS 'Total de Registros'
+FROM OrderDetails
+WHERE Quantity BETWEEN 7 AND 14
+GROUP BY Quantity
+ORDER BY Quantity ASC;
+
+/* EXERCICIO 47 */
+SELECT OrderID AS 'ORDENS',
+       COUNT(*) AS 'Total de Registros'
+FROM OrderDetails
+WHERE OrderID > 90
+GROUP BY OrderID
+ORDER BY OrderID ASC;
+
+/* EXERCICIO 48 */
+SELECT OrderDetailID AS 'ORDENS DETALHADAS',
+       COUNT(*) AS 'Total de Registros'
+FROM OrderDetails
+WHERE OrderDetailID < 50
+GROUP BY OrderDetailID
+ORDER BY OrderDetailID ASC;
+
+/* EXERCICIO 49 */
+SELECT Quantity AS 'QUANTIDADE',
+       COUNT(*) AS 'Total de Registros'
+FROM OrderDetails
+WHERE Quantity > 30
+GROUP BY Quantity
+ORDER BY Quantity ASC;
+
+/* EXERCICIO 50 */
+SELECT OrderID AS 'ORDENS',
+       COUNT(*) AS 'Total de Registros'
+FROM OrderDetails
+WHERE OrderID BETWEEN 10 AND 40
+GROUP BY OrderID
+ORDER BY OrderID ASC;
