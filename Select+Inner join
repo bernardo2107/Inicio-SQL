@@ -1,0 +1,9 @@
+Ex1:
+
+SELECT p.ProductName AS 'Nome do Produto', 
+s.suppliername AS 'Nome do fornecedor', 
+s.country AS 'País do Fornecedor', 
+s.SupplierID AS 'ID do Fornecedor'
+FROM suppliers AS s INNER JOIN products AS p
+ON s.SupplierID = p.SupplierID
+WHERE CategoryID = 2;
