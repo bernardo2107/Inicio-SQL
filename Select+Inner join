@@ -7,3 +7,26 @@ s.SupplierID AS 'ID do Fornecedor'
 FROM suppliers AS s INNER JOIN products AS p
 ON s.SupplierID = p.SupplierID
 WHERE CategoryID = 2;
+
+-- EX11:
+SELECT p.productName AS 'Nome do Produto',
+s.supplierName AS 'Nome do Fornecedor'
+FROM products AS p
+RIGHT JOIN suppliers AS s 
+ON s.supplierid = p.supplierid;
+
+-- EX12:
+SELECT p.productName AS 'Nome do Produto',
+s.country AS 'Pais',
+s.supplierID AS 'Nome do Fornecedor'
+FROM products AS p
+RIGHT JOIN suppliers AS s 
+ON s.supplierid = p.supplierid
+WHERE Country = 'Germany';
+
+-- EX13:
+SELECT s.shipperID AS 'Nome da transportadora',
+o.orderID AS 'ID do pedido'
+FROM orders AS o
+RIGHT JOIN shippers AS s
+ON s.shipperID = o.shipperID;
