@@ -30,3 +30,19 @@ o.orderID AS 'ID do pedido'
 FROM orders AS o
 RIGHT JOIN shippers AS s
 ON s.shipperID = o.shipperID;
+
+ -- EX14:
+ SELECT p.productname AS 'Nome do Produto',
+ su.suppliername AS 'Nome do Fornecedor',
+ s.shippername AS 'Nome da transportadora',
+ o.orderid AS 'Id do pedido'
+ FROM Products AS p
+ INNER JOIN suppliers AS su 
+ ON su.supplierid = p.supplierid
+ INNER JOIN orderdetails as od
+ ON p.productid = od.productid
+ INNER JOIN orders AS o 
+ ON od.orderid = o.orderid
+ INNER JOIN shippers AS s 
+ ON o.shipperid = s.shipperid
+ WHERE o.orderid = 10250;
