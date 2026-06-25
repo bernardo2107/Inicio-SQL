@@ -1,0 +1,199 @@
+-- EX1:
+SELECT productName AS 'Nome do Produto',
+price AS 'preço'
+FROM products 
+WHERE price > (SELECT AVG(price) FROM products)
+ORDER BY price DESC
+LIMIT 15;
+
+-- EX2:
+SELECT CONCAT(lastName,',',firstName) AS 'Nome do Funcionário',
+birthDate AS 'Data de Nascimento'
+FROM employees
+WHERE birthDate < (SELECT MAX (birthDate) FROM employees)
+ORDER BY birthdate 
+LIMIT 5;
+
+-- EX3:
+
+SELECT productName AS 'Nome do Produto',
+price AS 'Preço',
+(SELECT ROUND(AVG(p2.price), 2)
+FROM products AS p2 
+WHERE p2.categoryID = p.categoryID) AS 'Média da Categoria'
+FROM products AS p
+LIMIT 10;
+
+-- EX4:
+
+SELECT Concat(customerName, ' - ', country) AS 'Cliente e País'
+FROM customers 
+WHERE country  = (SELECT country 
+                 FROM suppliers 
+                 WHERE supplierID = 1);
+                 
+-- EX5:
+
+SELECT productName AS 'Nome do Produto',
+price AS 'Preço',
+ROUND (price * 10, 2) AS 'Stock Hipotético'
+FROM products
+WHERE (price*10) < (SELECT MAX (price) FROM products)
+LIMIT 12;
+
+-- EX6:
+
+SELECT CONCAT(customerName, ' - Última compra em: ',
+(SELECT MAX(orderDate)
+FROM orders
+WHERE orders.customerID = customers.customerID)) AS 'Cliente e Última Compra'
+FROM customers
+LIMIT 8;
+
+-- EX7:
+SELECT orderDetailID AS 'ID do Detalhe', 
+quantity AS 'Quantidade'
+FROM orderdetails
+WHERE quantity = (SELECT MAX (quantity) FROM orderdetails)
+LIMIT 5;
+
+-- EX8:
+SELECT CONCAT(shippername, ' - ', phone) AS 'Transportadora e telefone'
+FROM shippers 
+WHERE shipperID IN (SELECT DISTINCT shipperID
+FROM orders 
+WHERE customerID = 4)
+LIMIT 3;
+
+-- EX9:
+SELECT productname AS 'Nome do Produto',
+ROUND(discountedPrice, 2) AS 'Preço com 20% de desconto'
+FROM (SELECT productName,
+price * 0.8 AS discountedPrice
+FROM products) AS discounted
+WHERE discountedPrice > 50
+LIMIT 10;
+
+-- EX10:
+SELECT CONCAT(productName, ' - ', unit) AS 'Produto e Unidade'
+FROM products
+WHERE supplierID IN (SELECT supplierID
+FROM suppliers
+WHERE city = 'London');
+
+-- EX11:
+SELECT employee ID AS 'ID do funcionário',
+COUNT(orderID) AS 'Total de encomendas'
+FROM orders
+WHERE orderID IN (SELECT od.orderID
+FROM orderdetails AS od
+INNER JOIN products AS p ON od.productID = p.productID
+WHERE p.productname = 'Chais')
+GROUP BY employeeID
+ORDER BY COUNT(orderID) DESC;
+
+-- EX12:
+SELECT city AS 'Cidade',
+COUNT(customerID) AS 'Total de clientes'
+FROM customers
+WHERE city IN (SELECT DISTINCT city
+FROM suppliers)
+GROUP BY city 
+ORDER BY COUNT(customerID) DESC
+LIMIT 5;
+
+-- EX13:
+SELECT productID AS 'ID do produto',
+COUNT(orderID) AS 'Vezes vendido'
+FROM orderdetails
+WHERE productID IN (SELECT productID
+FROM products 
+WHERE categoryID = 	(SELECT categoryID 
+FROM categories
+WHERE categoryName = 'Beverages'))
+GROUP BY productID 
+ORDER BY COUNT(orderID) DESC;
+
+-- EX14:
+SELECT CASE 
+WHEN totalQuantity > 50 THEN 'Acima de 50'
+ELSE '50 ou menos'
+END AS 'Faixa de qualidade',
+COUNT(orderID) AS 'total de encomendas'
+FROM (SELECT orderID,
+SUM(quantity) AS totalQuantity
+FROM orderdetails
+GROUP BY orderID) AS resumo
+GROUP BY CASE
+WHEN totalquantity > 50 THEN 'Acima de 50'
+ELSE '50 ou menos'
+END;
+
+-- EX15:
+SELECT c.categoryName AS 'Categoria',
+       COUNT(p.productID) AS 'Produtos Acima da Média'
+FROM products AS p
+INNER JOIN categories AS c ON p.categoryID = c.categoryID
+WHERE p.price > (SELECT AVG(p2.price)
+                 FROM products AS p2
+                 WHERE p2.categoryID = p.categoryID)
+GROUP BY c.categoryName
+ORDER BY COUNT(p.productID) DESC;
+
+-- EX16:
+SELECT shipperID AS 'ID da transportadora',
+COUNT(orderID) AS 'Total de encomendas'
+FROM orders AS o
+WHERE EXISTS (SELECT 1 
+FROM orders AS o2
+WHERE o2.shipperID = o.shipperID 
+AND YEAR(o2.orderDate) = 1996)
+GROUP BY shipperID 
+ORDER BY COUNT(orderID) DESC;
+
+-- EX17:
+SELECT supplierID AS 'ID do fornecedor',
+COUNT(productID) AS 'Total de Produtos'
+FROM products 
+WHERE supplierID IN (SELECT supplierID
+FROM suppliers
+WHERE country IN (SELECT DISTINCT country
+FROM customers))
+GROUP BY supplierID 
+ORDER BY COUNT(productID) DESC
+LIMIT 10;
+
+-- EX18:
+SELECT country AS 'País',
+COUNT(customerID) AS 'Total de clientes',
+(SELECT COUNT(o.orderID)
+FROM orders AS o
+INNER JOIN customers AS c2 ON o.customerID = c2.customerID 
+WHERE c2.country = c.country) AS 'Total de Encomendas'
+FROM customers AS c 
+GROUP BY country 
+ORDER BY COUNT(customerID) DESC;
+
+-- EX19
+SELECT productID AS 'ID do produto',
+SUM(Quantity) AS 'Quantidade Total Vendida'
+FROM orderdetails
+WHERE productID IN (SELECT productID 
+FROM products 
+WHERE price > 20)
+GROUP BY productID
+ORDER BY SUM(quantity) DESC
+LIMIT 5;
+
+-- EX20:
+SELECT city AS 'Cidade',
+COUNT(customerID) AS 'Clientes VIP'
+FROM customers
+WHERE customerID IN (SELECT customerID
+FROM orders
+GROUP BY customerID 
+HAVING COUNT(orderID) > 3)
+GROUP BY city 
+ORDER BY COUNT(customerID) DESC;
+
+-- EX21:
