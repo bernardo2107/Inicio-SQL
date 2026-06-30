@@ -10,12 +10,11 @@ LIMIT 15;
 SELECT CONCAT(lastName,',',firstName) AS 'Nome do Funcionário',
 birthDate AS 'Data de Nascimento'
 FROM employees
-WHERE birthDate < (SELECT MAX (birthDate) FROM employees)
+WHERE birthDate < (SELECT MAX(birthDate) FROM employees)
 ORDER BY birthdate 
 LIMIT 5;
 
 -- EX3:
-
 SELECT productName AS 'Nome do Produto',
 price AS 'Preço',
 (SELECT ROUND(AVG(p2.price), 2)
@@ -38,11 +37,11 @@ SELECT productName AS 'Nome do Produto',
 price AS 'Preço',
 ROUND (price * 10, 2) AS 'Stock Hipotético'
 FROM products
-WHERE (price*10) < (SELECT MAX (price) FROM products)
+WHERE (price*10) < (SELECT MAX(price) FROM products)
 LIMIT 12;
 
--- EX6:
 
+-- EX6:
 SELECT CONCAT(customerName, ' - Última compra em: ',
 (SELECT MAX(orderDate)
 FROM orders
@@ -54,7 +53,7 @@ LIMIT 8;
 SELECT orderDetailID AS 'ID do Detalhe', 
 quantity AS 'Quantidade'
 FROM orderdetails
-WHERE quantity = (SELECT MAX (quantity) FROM orderdetails)
+WHERE quantity = (SELECT MAX(quantity) FROM orderdetails)
 LIMIT 5;
 
 -- EX8:
@@ -82,7 +81,7 @@ FROM suppliers
 WHERE city = 'London');
 
 -- EX11:
-SELECT employee ID AS 'ID do funcionário',
+SELECT employeeID AS 'ID do funcionário',
 COUNT(orderID) AS 'Total de encomendas'
 FROM orders
 WHERE orderID IN (SELECT od.orderID
@@ -103,6 +102,7 @@ ORDER BY COUNT(customerID) DESC
 LIMIT 5;
 
 -- EX13:
+
 SELECT productID AS 'ID do produto',
 COUNT(orderID) AS 'Vezes vendido'
 FROM orderdetails
@@ -115,21 +115,16 @@ GROUP BY productID
 ORDER BY COUNT(orderID) DESC;
 
 -- EX14:
-SELECT CASE 
-WHEN totalQuantity > 50 THEN 'Acima de 50'
-ELSE '50 ou menos'
-END AS 'Faixa de qualidade',
-COUNT(orderID) AS 'total de encomendas'
-FROM (SELECT orderID,
-SUM(quantity) AS totalQuantity
+
+SELECT COUNT(*) AS 'TotalEncomendas'
+FROM (SELECT orderid,
+SUM(quantity)AS 'QuantidadeTotal'
 FROM orderdetails
-GROUP BY orderID) AS resumo
-GROUP BY CASE
-WHEN totalquantity > 50 THEN 'Acima de 50'
-ELSE '50 ou menos'
-END;
+GROUP BY orderid) AS ResumoEncomendas
+WHERE QuantidadeTotal > 50;
 
 -- EX15:
+
 SELECT c.categoryName AS 'Categoria',
        COUNT(p.productID) AS 'Produtos Acima da Média'
 FROM products AS p
@@ -141,6 +136,7 @@ GROUP BY c.categoryName
 ORDER BY COUNT(p.productID) DESC;
 
 -- EX16:
+
 SELECT shipperID AS 'ID da transportadora',
 COUNT(orderID) AS 'Total de encomendas'
 FROM orders AS o
@@ -152,6 +148,7 @@ GROUP BY shipperID
 ORDER BY COUNT(orderID) DESC;
 
 -- EX17:
+
 SELECT supplierID AS 'ID do fornecedor',
 COUNT(productID) AS 'Total de Produtos'
 FROM products 
@@ -164,6 +161,7 @@ ORDER BY COUNT(productID) DESC
 LIMIT 10;
 
 -- EX18:
+
 SELECT country AS 'País',
 COUNT(customerID) AS 'Total de clientes',
 (SELECT COUNT(o.orderID)
@@ -175,6 +173,7 @@ GROUP BY country
 ORDER BY COUNT(customerID) DESC;
 
 -- EX19
+
 SELECT productID AS 'ID do produto',
 SUM(Quantity) AS 'Quantidade Total Vendida'
 FROM orderdetails
@@ -186,6 +185,7 @@ ORDER BY SUM(quantity) DESC
 LIMIT 5;
 
 -- EX20:
+
 SELECT city AS 'Cidade',
 COUNT(customerID) AS 'Clientes VIP'
 FROM customers
@@ -196,4 +196,117 @@ HAVING COUNT(orderID) > 3)
 GROUP BY city 
 ORDER BY COUNT(customerID) DESC;
 
--- EX21:
+-- EX:21:
+
+SELECT Employeeid AS 'ID do Funcionario', COUNT(OrderiD) AS 'Total de Encomendas'
+FROM orders 
+GROUP BY employeeid
+HAVING COUNT(Orderid) > (
+SELECT AVG ('total de pedidos')
+    FROM (
+        SELECT COUNT(OrderID) AS TotalPedidos
+        FROM Orders
+        GROUP BY EmployeeID
+    ) AS SUB
+);
+
+/*22
+
+SELECT CategoryID,
+       GROUP_CONCAT(ProductName) AS Produtos
+FROM Products
+GROUP BY CategoryID
+HAVING AVG(Price) > (
+    SELECT AVG(Price)
+    FROM Products
+);
+
+/*23
+
+SELECT Country,
+       COUNT(*) AS TotalClientes
+FROM Customers
+GROUP BY Country
+HAVING COUNT(*) = (
+    SELECT COUNT(*)
+    FROM Customers
+    WHERE Country = 'USA'
+);
+
+/*24
+SELECT OrderID,
+       SUM(Quantity) AS TotalQuantidade
+FROM OrderDetails
+GROUP BY OrderID
+HAVING SUM(Quantity) > (
+    SELECT MAX(QuantidadeLinha)
+    FROM (
+        SELECT Quantity AS QuantidadeLinha
+        FROM OrderDetails
+    ) t
+);
+
+/*25
+SELECT SupplierID,
+       COUNT(*) AS TotalProdutos
+FROM Products
+GROUP BY SupplierID
+HAVING COUNT(*) > ALL (
+    SELECT COUNT(*)
+    FROM Products p
+    JOIN Suppliers s ON p.SupplierID = s.SupplierID
+    WHERE s.Country = 'UK'
+    GROUP BY p.SupplierID
+);
+
+/* 26. 
+SELECT CustomerID, COUNT(*) AS TOTALENCOMENDAS
+FROM orders 
+GROUP BY CustomerID
+HAVING COUNT(*) > (
+    SELECT COUNT(*)
+    FROM Orders 
+    WHERE customerID =1 
+)
+limit 5;
+
+/*27. 
+SELECT CategoryID as categoria, MAX(price) as PrecoMaximo 
+FROM Products
+GROUP BY CategoryID
+HAVING MAX(price) <(
+    SELECT MAX(price)
+    FROM Products 
+    WHERE Price < 100 
+);
+
+/*28. 
+SELECT EmployeeID as IDdasEncomendas, COUNT(*) AS TotalEncomendas
+FROM Orders
+GROUP BY EmployeeID
+HAVING EXISTS (
+    SELECT 1
+    FROM Orders 
+    WHERE OrderDate = '1996-07-04'
+);
+
+--Ex29
+
+SELECT ProductID AS IdDoProduto,
+ SUM(Quantity) AS Quantidade
+FROM OrderDetails
+GROUP BY ProductID
+HAVING ProductID = (
+    SELECT ProductID
+    FROM Products
+    WHERE ProductName = 'tofu'
+);
+
+--Ex30. 
+SELECT City AS Cidade,
+	   COUNT(*) AS TOTALFORNECEDORES 
+FROM Suppliers
+GROUP BY CITY
+HAVING COUNT(*) =(
+    SELECT COUNT(*)
+    FROM Shippers);
