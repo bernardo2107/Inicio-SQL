@@ -1,45 +1,110 @@
-CREATE DATABASE EduGest;
-
 CREATE TABLE curso (
-curso_id INT AUTO_INCREMENT PRIMARY KEY ,
-nome VARCHAR(150) NOT NULL,
-codigo VARCHAR(30) NOT NULL,
-carga_horario INT NOT NULL,
-nivel VARCHAR(50) NOT NULL,
-UNIQUE KEY uk_curso_codigo (codigo)
-) ENGINE=InnoBD DEFAULT CHARSET=utf8mb4;
+  curso_id INT AUTO_INCREMENT PRIMARY KEY,
+  nome VARCHAR(255) NOT NULL,
+  codigo VARCHAR(100) NOT NULL UNIQUE,
+  carga_horaria INT NOT NULL,
+  nivel VARCHAR(100) NOT NULL
+) ENGINE=InnoDB;
 
 CREATE TABLE aluno (
-aluno_id INT AUTO_INCREMENT PRIMARY KEY,
-nome VARCHAR(150) NOT NULL,
-data_nascimento DATE NULL,
-email VARCHAR(150) NOT NULL,
-cpf VARCHAR(20) NOT NULL,
-data_ingresso DATE NOT NULL,
-curso_id INT NOT NULL,
-status VARCHAR(30) NOT NULL DEFAULT 'ativo',
-UNIQUE KEY uk_aluno_email(email),
-UNIQUE KEY uk_aluno_cpf(cpf),
-KEY idx_aluno_curso_id(curso_id),
-CONSTRAINT fk_aluno_curso
-FOREIGN KEY (curso_id) REFERENCES curso(curso_id)
-ON UPDATE CASCADE 
-ON DELETE RESTRICT)
-ENGINE= InnoDB DEFAULT CHARSET= utf8mb4;
-
-CREATE TABLE Disciplina(
-disciplina_id INT AUTo_INCREMENT PRIMARY KEY,
-nome VARCHAR(150) NOT NULL,
-codigo VARCHAR(30) NOT NULL,
-carga_horaria INT NOT NULL,
-curso_id INT NOT NULL,
-UNIQUE KEY uk_disciplina_codigo (codigo),
-KEY idx_disciplina_curso_id(curso_id),
-CONSTRAINT fk_disciplina_curso
-FOREIGN KEY (curso_id) REFERENCES curso (curso_id)
-ON UPDATE CASCADE
-ON DELETE RESTRICT)
-ENGINE= InnoDB DEFAULT CHARSET= utf8mb4;
+  aluno_id INT AUTO_INCREMENT PRIMARY KEY,
+  nome VARCHAR(255) NOT NULL,
+  data_nascimento DATE NOT NULL,
+  email VARCHAR(255) NOT NULL,
+  cpf VARCHAR(20) NOT NULL UNIQUE,
+  data_ingresso DATE NOT NULL,
+  curso_id INT NOT NULL,
+  status VARCHAR(100) NOT NULL,
+  CONSTRAINT fk_aluno_curso
+    FOREIGN KEY (curso_id) REFERENCES curso (curso_id)
+    ON UPDATE CASCADE
+    ON DELETE RESTRICT
+) ENGINE=InnoDB;
 
 CREATE TABLE professor (
-professor_id INT AUTO_INCREMENT PRIMARY_KEY
+  professor_id INT AUTO_INCREMENT PRIMARY KEY,
+  nome VARCHAR(255) NOT NULL,
+  email VARCHAR(255) NOT NULL,
+  cpf VARCHAR(20) NOT NULL UNIQUE,
+  area VARCHAR(255) NOT NULL,
+  status VARCHAR(100) NOT NULL
+) ENGINE=InnoDB;
+
+CREATE TABLE disciplina (
+disciplina_id INT AUTO_INCREMENT PRIMARY KEY,
+nome VARCHAR(255) NOT NULL,
+codigo VARCHAR(100) NOT NULL UNIQUE,
+carga_horaria INT NOT NULL,
+curso_id INT NULL,
+CONSTRAINT fk_disciplina_curso
+FOREIGN KEY (curso_id) REFERENCES curso (curso_id)
+ON UPDATE CASCADE 
+ON DELETE RESTRICT)
+ENGINE=InnoDB
+
+CREATE TABLE matricula (
+matricula_id INT AUTO_INCREMENT PRIMARY KEY,
+aluno_id INT NOT NULL,
+disciplina_id INT NOT NULL,
+data_matricula DATE NOT NULL,
+situacao VARCHAR(100) NOT NULL,
+CONSTRAINT fk_matricula_aluno 
+FOREIGN KEY (aluno_id) REFERENCES aluno(aluno_id)
+ON UPDATE CASCADE 
+ON DELETE RESTRICT,
+CONSTRAINT fk_matricula_disciplina
+FOREIGN KEY (disciplina_id) REFERENCES disciplina(disciplina_id)
+ON UPDATE CASCADE 
+ON DELETE RESTRICT)
+ENGINE = InnoDB
+
+CREATE TABLE nota ( 
+nota_id INT AUTO_INCREMENT PRIMARY KEY,
+matricula_id INT NOT NULL,
+avaliacao VARCHAR(255) NOT NULL,
+valor DECIMAL(10,2) NOT NULL,
+peso DECIMAL(10,2) NOT NULL,
+periodo VARCHAR(100) NOT NULL,
+CONSTRAINT fk_nota_matricula
+FOREIGN KEY (matricula_id) REFERENCES matriula (matricula_id)
+ON UPDATE CASCADE
+ON DELETE CASCADE)
+ENGINE = InnoDB
+
+CREATE TABLE falta (
+falta_id INT AUTO_INCREMENT PRIMARY KEY,
+matricula_id INT NOT NULL,
+date DATE NOT NULL,
+aulas_perdidas INT NOT NULL,
+justificativas VARCHAR(255),
+CONSTRAINT fk_falta_matricula
+FOREIGN KEY (matricula_id) REFERENCES matricula(matricula_id) 
+ON UPDATE CASCADE 
+ON DELETE CASCADE)
+ENGINE = InnoDB
+
+CREATE TABLE mensalidade (
+mensalidade_id INT AUTO_INCREMENT PRIMARY KEY,
+aluno_id INT NOT NULL,
+competencia VARCHAR(20) NOT NULL,
+valor DECIMAL(10,2) NOT NULL,
+vencimento DATE NOT NULL,
+status VARCHAR(100) NOT NULL,
+CONSTRAINT fk_mensalidade_aluno
+FOREIGN KEY (aluno_id) REFERENCES aluno(aluno_id)
+ON UPDATE CASCADE 
+ON DELETE RESTRICT)
+ENGINE = InnoDB
+
+CREATE TABLE pagamento (
+pagamento_id INT AUTO_INCREMENT PRIMARY KEY,
+mensalidade_id INT NOT NULL,
+valor_pago DECIMAL (10,2) NOT NULL,
+data_pagamento DATE NOT NULL,
+metodo VARCHAR(100) NOT NULL,
+comprovante VARCHAR(255),
+CONSTRAINT fk_pagamento_mensalidade
+FOREIGN KEY (mensalidade_id) REFERENCES mensalidade(mensalidade_id)
+ON UPDATE CASCADE 
+ON DELETE CASCADE)
+Engine = InnoDB
