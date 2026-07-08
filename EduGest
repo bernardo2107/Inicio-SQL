@@ -1,0 +1,45 @@
+CREATE DATABASE EduGest;
+
+CREATE TABLE curso (
+curso_id INT AUTO_INCREMENT PRIMARY KEY ,
+nome VARCHAR(150) NOT NULL,
+codigo VARCHAR(30) NOT NULL,
+carga_horario INT NOT NULL,
+nivel VARCHAR(50) NOT NULL,
+UNIQUE KEY uk_curso_codigo (codigo)
+) ENGINE=InnoBD DEFAULT CHARSET=utf8mb4;
+
+CREATE TABLE aluno (
+aluno_id INT AUTO_INCREMENT PRIMARY KEY,
+nome VARCHAR(150) NOT NULL,
+data_nascimento DATE NULL,
+email VARCHAR(150) NOT NULL,
+cpf VARCHAR(20) NOT NULL,
+data_ingresso DATE NOT NULL,
+curso_id INT NOT NULL,
+status VARCHAR(30) NOT NULL DEFAULT 'ativo',
+UNIQUE KEY uk_aluno_email(email),
+UNIQUE KEY uk_aluno_cpf(cpf),
+KEY idx_aluno_curso_id(curso_id),
+CONSTRAINT fk_aluno_curso
+FOREIGN KEY (curso_id) REFERENCES curso(curso_id)
+ON UPDATE CASCADE 
+ON DELETE RESTRICT)
+ENGINE= InnoDB DEFAULT CHARSET= utf8mb4;
+
+CREATE TABLE Disciplina(
+disciplina_id INT AUTo_INCREMENT PRIMARY KEY,
+nome VARCHAR(150) NOT NULL,
+codigo VARCHAR(30) NOT NULL,
+carga_horaria INT NOT NULL,
+curso_id INT NOT NULL,
+UNIQUE KEY uk_disciplina_codigo (codigo),
+KEY idx_disciplina_curso_id(curso_id),
+CONSTRAINT fk_disciplina_curso
+FOREIGN KEY (curso_id) REFERENCES curso (curso_id)
+ON UPDATE CASCADE
+ON DELETE RESTRICT)
+ENGINE= InnoDB DEFAULT CHARSET= utf8mb4;
+
+CREATE TABLE professor (
+professor_id INT AUTO_INCREMENT PRIMARY_KEY
