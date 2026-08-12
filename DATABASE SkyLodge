@@ -202,6 +202,24 @@ CREATE TABLE item_consumo (
         ON DELETE CASCADE
 ) ENGINE=InnoDB;
 
+-- =============================
+-- ALTER TABLE - NOVAS COLUNAS 
+-- =============================
+
+ALTER TABLE cadeia_hoteleira ADD COLUMN data_cadastro DATE DEFAULT(CURRENT_DATE);
+ALTER TABLE hotel_pousada ADD COLUMN horario_recepcao VARCHAR(50);
+ALTER TABLE categoria_alojamento ADD COLUMN valor_diaria DECIMAL(10,2) NOT NULL DEFAULT 0.00;
+ALTER TABLE quarto ADD COLUMN ultima_manutencao DATE;
+ALTER TABLE funcionario ADD COLUMN data_admissao DATE;
+ALTER TABLE cliente ADD COLUMN data_nascimento DATE;
+ALTER TABLE reserva ADD COLUMN quantidade_hospedes TINYINT UNSIGNED NOT NULL DEFAULT 1;
+ALTER TABLE checkin ADD COLUMN documentos_conferidos BOOLEAN NOT NULL DEFAULT FALSE;
+ALTER TABLE checkout ADD COLUMN conta_quitada BOOLEAN NOT NULL DEFAULT FALSE;
+ALTER TABLE servico_limpeza ADD COLUMN horario_conclusao DATETIME;
+ALTER TABLE consumo ADD COLUMN faturado BOOLEAN NOT NULL DEFAULT FALSE;
+ALTER TABLE item_consumo ADD COLUMN categoria_item VARCHAR(100);
+
+
 SET FOREIGN_KEY_CHECKS = 1;
 
 INSERT INTO cadeia_hoteleira (id_cadeia, nome, telefone, email, website) VALUES (1, 'SkyLodge Cadeia 001', '+55 11 90000-0001', 'contato001@skylodge.com.br', 'https://www.skylodge.com.br/cadeia/1');
