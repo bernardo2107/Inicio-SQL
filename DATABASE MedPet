@@ -80,6 +80,39 @@ CREATE TABLE Pagamento(
     FOREIGN KEY (IdFatura) REFERENCES Fatura(IdFatura)
 );
 
+ 
+-- Dono: data em que o dono foi cadastrado no sistema
+ALTER TABLE Dono
+    ADD COLUMN DataCadastro DATE DEFAULT (CURRENT_DATE);
+ 
+-- Animal: peso do animal (kg), útil para dosagens e histórico clínico
+ALTER TABLE Animal
+    ADD COLUMN Peso DECIMAL(5,2) NULL;
+ 
+-- Consulta: veterinário responsável pelo atendimento
+ALTER TABLE Consulta
+    ADD COLUMN Veterinario VARCHAR(100) NULL;
+ 
+-- Internamento: custo diário do internamento
+ALTER TABLE Internamento
+    ADD COLUMN CustoDiario DECIMAL(10,2) NULL;
+ 
+-- HistoricoMedico: data da última atualização do histórico
+ALTER TABLE HistoricoMedico
+    ADD COLUMN DataAtualizacao DATETIME DEFAULT CURRENT_TIMESTAMP;
+ 
+-- Fatura: data de vencimento da fatura
+ALTER TABLE Fatura
+    ADD COLUMN DataVencimento DATE NULL;
+ 
+-- Vacina: veterinário responsável pela aplicação
+ALTER TABLE Vacina
+    ADD COLUMN Veterinario VARCHAR(100) NULL;
+ 
+-- Pagamento: status detalhado do pagamento (ex: Confirmado, Estornado)
+ALTER TABLE Pagamento
+    ADD COLUMN StatusPagamento VARCHAR(30) DEFAULT 'Confirmado';
+ 
 USE MedPet;
 
 -- ================= DONO =================
