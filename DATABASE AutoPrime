@@ -123,6 +123,65 @@ CREATE TABLE venda (
         FOREIGN KEY (veiculo_id) REFERENCES veiculo(veiculo_id)
 );
 
+-- =========================================================
+-- SCRIPT ADICIONAL - ALTER TABLE
+-- Adição de novas colunas às tabelas existentes
+-- =========================================================
+
+-- 1. CUSTOMERS
+-- Adiciona o tipo de cliente
+ALTER TABLE Customers
+ADD COLUMN CustomerType VARCHAR(30);
+
+
+-- 2. EMPLOYEES
+-- Adiciona o departamento em que o funcionário trabalha
+ALTER TABLE Employees
+ADD COLUMN Department VARCHAR(50);
+
+
+-- 3. SUPPLIERS
+-- Adiciona o site do fornecedor
+ALTER TABLE Suppliers
+ADD COLUMN Website VARCHAR(150);
+
+
+-- 4. SHIPPERS
+-- Adiciona o e-mail da transportadora
+ALTER TABLE Shippers
+ADD COLUMN Email VARCHAR(120);
+
+
+-- 5. CATEGORIES
+-- Adiciona o status da categoria
+ALTER TABLE Categories
+ADD COLUMN CategoryStatus VARCHAR(20) DEFAULT 'ATIVA';
+
+
+-- 6. PRODUCTS
+-- Adiciona o peso do produto em quilogramas
+ALTER TABLE Products
+ADD COLUMN Weight DECIMAL(8,2);
+
+
+-- 7. ORDERS
+-- Adiciona o valor do frete do pedido
+ALTER TABLE Orders
+ADD COLUMN ShippingCost DECIMAL(10,2) DEFAULT 0.00;
+
+
+-- 8. ORDERDETAILS
+-- Adiciona o percentual de imposto aplicado ao item
+ALTER TABLE OrderDetails
+ADD COLUMN TaxPercent DECIMAL(5,2) DEFAULT 0.00;
+
+
+-- 9. RETURNS
+-- Adiciona o motivo da devolução
+ALTER TABLE Returns
+ADD COLUMN ReturnReason VARCHAR(200);
+
+
 -- ---------------- CLIENTE ----------------
 INSERT INTO cliente (cliente_id, nome, cpf_cnpj, email, telefone, endereco, data_cadastro, tipo_cliente, status) VALUES
 (1, 'Osvaldo Santos', '43321819600', 'cliente1@email.com', '(31) 92535-4582', 'Rua Almeida, 518, Betim/MG', '2015-08-06', 'PF', 'ativo'),
