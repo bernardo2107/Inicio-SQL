@@ -132,6 +132,58 @@ CREATE TABLE pagamento (
     ON DELETE CASCADE
 ) ENGINE=InnoDB;
 
+
+USE escola_academica;
+
+-- =========================================================
+-- ALTER TABLE
+-- =========================================================
+
+-- 1. CURSO
+ALTER TABLE curso
+ADD COLUMN modalidade VARCHAR(50) DEFAULT 'Presencial';
+
+
+-- 2. ALUNO
+ALTER TABLE aluno
+ADD COLUMN telefone VARCHAR(20);
+
+
+-- 3. PROFESSOR
+ALTER TABLE professor
+ADD COLUMN telefone VARCHAR(20);
+
+
+-- 4. DISCIPLINA
+ALTER TABLE disciplina
+ADD COLUMN semestre INT DEFAULT 1;
+
+
+-- 5. MATRICULA
+ALTER TABLE matricula
+ADD COLUMN observacao VARCHAR(255);
+
+
+-- 6. NOTA
+ALTER TABLE nota
+ADD COLUMN data_avaliacao DATE;
+
+
+-- 7. FALTA
+ALTER TABLE falta
+ADD COLUMN abono BOOLEAN DEFAULT FALSE;
+
+
+-- 8. MENSALIDADE
+ALTER TABLE mensalidade
+ADD COLUMN desconto DECIMAL(10,2) DEFAULT 0.00;
+
+
+-- 9. PAGAMENTO
+ALTER TABLE pagamento
+ADD COLUMN status_pagamento VARCHAR(50) DEFAULT 'Confirmado';
+
+
 INSERT INTO curso (curso_id, nome, codigo, carga_horaria, nivel) VALUES
   (1, 'Administração', 'CUR001', 2400, 'Graduação'),
   (2, 'Ciências Contábeis', 'CUR002', 1600, 'Tecnólogo'),
