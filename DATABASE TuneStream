@@ -86,6 +86,44 @@ CREATE TABLE PagamentoRoyalties(
     FOREIGN KEY (IdMusica) REFERENCES Musica(IdMusica)
 );
 
+ 
+-- Utilizador: registra o último acesso do utilizador
+ALTER TABLE Utilizador
+    ADD COLUMN UltimoLogin DATETIME NULL;
+ 
+-- Subscricao: status atual da subscrição (Ativa, Expirada, Cancelada)
+ALTER TABLE Subscricao
+    ADD COLUMN StatusSubscricao VARCHAR(20) DEFAULT 'Ativa';
+ 
+-- Artista: indica se o perfil do artista é verificado
+ALTER TABLE Artista
+    ADD COLUMN Verificado BOOLEAN DEFAULT FALSE;
+ 
+-- Album: total de faixas do álbum (mantido em cache/atualizado por procedure)
+ALTER TABLE Album
+    ADD COLUMN TotalFaixas INT DEFAULT 0;
+ 
+-- Musica: indica se a faixa possui conteúdo explícito
+ALTER TABLE Musica
+    ADD COLUMN ConteudoExplicito BOOLEAN DEFAULT FALSE;
+ 
+-- Playlist: total de reproduções acumuladas da playlist
+ALTER TABLE Playlist
+    ADD COLUMN TotalReproducoes INT DEFAULT 0;
+ 
+-- PlaylistMusica: marca se a faixa foi destacada como favorita na playlist
+ALTER TABLE PlaylistMusica
+    ADD COLUMN Favorita BOOLEAN DEFAULT FALSE;
+ 
+-- HistoricoReproducao: dispositivo utilizado na reprodução
+ALTER TABLE HistoricoReproducao
+    ADD COLUMN Dispositivo VARCHAR(50) NULL;
+ 
+-- PagamentoRoyalties: status do pagamento (Pago, Pendente, Estornado)
+ALTER TABLE PagamentoRoyalties
+    ADD COLUMN StatusPagamento VARCHAR(20) DEFAULT 'Pago';
+
+
 -- =====================================================================
 -- Utilizador
 -- =====================================================================
